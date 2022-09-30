@@ -1,7 +1,5 @@
 package org.nouk.dataview.core.display.ui;
 
-import org.nouk.dataview.core.display.Input;
-
 import java.util.List;
 
 public class CheckBoxLong extends SqlSingleList<List<Long>> {
@@ -15,4 +13,10 @@ public class CheckBoxLong extends SqlSingleList<List<Long>> {
         super.displayName = name;
         super.defaultValue = defaultValue;
     }
+
+    @Override
+    public String getSql() {
+        return super.getText();
+    }
+
 }

@@ -1,12 +1,15 @@
 package org.nouk.dataview.core.datasource;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.sql.DataSource;
 import java.io.Serializable;
 
-@Data
-public class DataViewDataSourceSingle  implements Serializable {
+
+public class DataViewDataSourceSingle implements Serializable {
+    @Getter
+    @Setter
     private DataSource dataSource;
 
     //构造器私有化

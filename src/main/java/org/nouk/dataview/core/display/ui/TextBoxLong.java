@@ -2,6 +2,7 @@ package org.nouk.dataview.core.display.ui;
 
 import org.nouk.dataview.core.display.Input;
 
+
 public class TextBoxLong extends Input<Long> {
 
 
@@ -14,4 +15,5 @@ public class TextBoxLong extends Input<Long> {
         super.displayName = name;
         super.defaultValue = defaultValue;
     }
+
 }

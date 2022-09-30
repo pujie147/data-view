@@ -1,6 +1,6 @@
 package org.nouk.dataview.core.display.ui;
 
-import org.nouk.dataview.core.display.Input;
+
 
 public class SelectString extends SqlSingleList<String> {
 
@@ -13,4 +13,5 @@ public class SelectString extends SqlSingleList<String> {
         super.displayName = name;
         super.defaultValue = defaultValue;
     }
+
 }

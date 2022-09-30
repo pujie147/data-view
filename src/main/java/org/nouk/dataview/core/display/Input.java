@@ -2,6 +2,7 @@ package org.nouk.dataview.core.display;
 
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.Expose;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.nouk.dataview.core.display.ui.*;
@@ -13,11 +14,11 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Data
-public abstract class Input<T> implements Serializable,GUIInterface {
+public abstract class Input<T> implements Serializable,GUIInterface,JDBCInterface,Cloneable {
 
 
     public static final RuntimeTypeAdapterFactory TypeAdapterFactory =
-            RuntimeTypeAdapterFactory.of(Input.class, "")
+            RuntimeTypeAdapterFactory.of(Input.class, "type")
                     .registerSubtype(TextBoxString.class, "TextBoxString")
                     .registerSubtype(TextBoxLong.class, "TextBoxLong")
                     .registerSubtype(SelectDateTime.class, "SelectDateTime")
@@ -28,11 +29,15 @@ public abstract class Input<T> implements Serializable,GUIInterface {
             ;
 
     protected String name;
+    @Expose
     protected String displayName;
+
     protected String text;
-    protected T value;
+    @Expose
     protected T defaultValue;
+    @Expose
     protected boolean hidden;
+    @Expose
     protected boolean modified; //是否能修改
     protected String argument;
 
@@ -102,6 +107,15 @@ public abstract class Input<T> implements Serializable,GUIInterface {
         return null;
     }
 
+    public Input clone() {
+        try {
+            return (Input) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -147,5 +161,12 @@ public abstract class Input<T> implements Serializable,GUIInterface {
         result = 31 * result + (hidden ? 1 : 0);
         result = 31 * result + (argument != null ? argument.hashCode() : 0);
         return result;
+    }
+
+
+
+    @Override
+    public String getSql() {
+        return getText();
     }
 }

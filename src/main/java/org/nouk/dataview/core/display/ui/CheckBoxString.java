@@ -1,18 +1,17 @@
 package org.nouk.dataview.core.display.ui;
 
-import org.nouk.dataview.core.display.Input;
+import java.util.ArrayList;
 
-import java.util.List;
-
-public class CheckBoxString extends SqlSingleList<List<String>> {
+public class CheckBoxString extends SqlSingleList<ArrayList<String>> {
 
     public CheckBoxString() {
 
     }
 
-    public CheckBoxString(String name, List<String> defaultValue) {
+    public CheckBoxString(String name, ArrayList<String> defaultValue) {
         super.name = name;
         super.displayName = name;
         super.defaultValue = defaultValue;
     }
+
 }

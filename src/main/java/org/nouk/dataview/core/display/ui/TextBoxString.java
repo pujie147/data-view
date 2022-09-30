@@ -2,6 +2,7 @@ package org.nouk.dataview.core.display.ui;
 
 import org.nouk.dataview.core.display.Input;
 
+
 public class TextBoxString extends Input<String> {
 
     public TextBoxString() {
